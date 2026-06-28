@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -38,6 +38,15 @@
       padding-bottom: 90px;
     }
 
+    /* Стили экранов приложения */
+    .screen {
+      width: 100%;
+      display: none;
+    }
+    .screen.active {
+      display: block;
+    }
+
     /* Шапка пользователя */
     .topbar {
       padding: 16px 16px 12px;
@@ -60,7 +69,12 @@
       width: 40px;
       height: 40px;
       border-radius: 50%;
-      background: #e2e8f0 url('ava.png') center/cover no-repeat;
+      background-color: #cbd5e1;
+      background-image: url('ava.png');
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      flex-shrink: 0;
     }
 
     .profile-name {
@@ -357,8 +371,6 @@
       width: calc(100% - 32px);
     }
 
-    /* НОВЫЕ БЛОКИ ПОД МОНИТОРИНГОМ */
-    
     /* Фиолетовый баннер кредитки */
     .credit-banner {
       margin: 0 16px 16px;
@@ -474,7 +486,6 @@
       position: relative;
     }
 
-    /* Иконка сейфа на CSS */
     .safe-icon {
       width: 36px;
       height: 36px;
@@ -602,6 +613,96 @@
       padding-right: 8px;
     }
 
+    /* СТИЛИ НАСТРОЕК ВНУТРИ СТРАНИЦЫ ОПЛАТЫ */
+    .settings-page-container {
+      padding: 20px 16px 40px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 24px;
+    }
+
+    .field {
+      margin-bottom: 20px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 14px;
+      font-weight: 600;
+      color: #555555;
+      margin-bottom: 8px;
+    }
+
+    .field input, .field select {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      font-size: 15px;
+      background: #ffffff;
+      outline: none;
+    }
+
+    .field input:focus, .field select:focus {
+      border-color: #22c55e;
+    }
+
+    .card-edit-box {
+      border: 1px solid #e2e8f0;
+      padding: 14px;
+      border-radius: 16px;
+      margin-bottom: 14px;
+      background: #ffffff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.01);
+    }
+
+    .card-edit-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .delete-card-btn {
+      background: transparent;
+      border: none;
+      color: #ef4444;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      width: 100%;
+      background: #22c55e;
+      color: white;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      box-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);
+    }
+
+    .btn-add-card {
+      width: 100%;
+      background: transparent;
+      border: 1px dashed #cbd5e1;
+      padding: 12px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+
     /* Нижнее меню навигации */
     .bottom-nav {
       position: fixed;
@@ -640,248 +741,129 @@
       width: 24px;
       height: 24px;
     }
-
-    /* Настройки (Модальное окно) */
-    .modal-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-      display: none;
-      justify-content: center;
-      align-items: flex-end;
-      z-index: 20;
-      opacity: 0;
-      transition: opacity 0.2s ease;
-    }
-
-    .modal-backdrop.open {
-      display: flex;
-      opacity: 1;
-    }
-
-    .modal {
-      width: 100%;
-      max-width: 440px;
-      background: #ffffff;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
-      padding: 20px;
-      max-height: 85vh;
-      overflow-y: auto;
-      transform: translateY(100%);
-      transition: transform 0.2s ease;
-    }
-
-    .modal-backdrop.open .modal {
-      transform: translateY(0);
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-
-    .modal-title {
-      font-size: 18px;
-      font-weight: 700;
-    }
-
-    .close-btn {
-      background: #f1f3f5;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 18px;
-      cursor: pointer;
-    }
-
-    .field {
-      margin-bottom: 16px;
-    }
-
-    .field label {
-      display: block;
-      font-size: 13px;
-      font-weight: 600;
-      color: #666;
-      margin-bottom: 6px;
-    }
-
-    .field input, .field select {
-      width: 100%;
-      padding: 10px 12px;
-      border: 1px solid #e2e8f0;
-      border-radius: 8px;
-      font-size: 14px;
-      background: #f8fafc;
-    }
-
-    .card-edit-box {
-      border: 1px solid #f1f3f5;
-      padding: 12px;
-      border-radius: 12px;
-      margin-bottom: 12px;
-      background: #fafafa;
-    }
-
-    .card-edit-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
-      margin-bottom: 8px;
-    }
-
-    .delete-card-btn {
-      background: transparent;
-      border: none;
-      color: #ef4444;
-      font-size: 12px;
-      font-weight: 600;
-      cursor: pointer;
-      margin-top: 4px;
-    }
-
-    .modal-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      flex: 1;
-      padding: 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      font-weight: 600;
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary {
-      background: #22c55e;
-      color: white;
-    }
-
-    .btn-secondary {
-      background: #f1f3f5;
-      color: #333;
-    }
-
-    .btn-add-card {
-      width: 100%;
-      background: transparent;
-      border: 1px dashed #cbd5e1;
-      padding: 10px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #64748b;
-      margin-bottom: 12px;
-    }
   </style>
 </head>
 <body>
 
   <div class="app">
-    <header class="topbar">
-      <button class="profile-trigger" id="settingsOpen" type="button">
-        <div class="avatar" id="profile-avatar"></div>
-        <div class="profile-name" id="profile-name">HIKMATULLA</div>
-      </button>
-    </header>
 
-    <div class="promo-row" id="promoRow"></div>
-
-    <section class="balance-section">
-      <div class="balance-label">Общий баланс</div>
-      <div class="balance-row">
-        <button class="balance-btn" id="toggleBalance" type="button">
-          <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+    <div id="screen-main" class="screen active">
+      <header class="topbar">
+        <button class="profile-trigger" id="settingsOpen" type="button">
+          <div class="avatar" id="profile-avatar"></div>
+          <div class="profile-name" id="profile-name">HIKMATULLA</div>
         </button>
-        
-        <div class="balance-amount" id="totalBalance">—</div>
+      </header>
 
-        <button class="balance-btn" id="refreshBalance" type="button">
-          <svg width="22" height="22" viewBox="0 0 24 24" id="refreshIcon"><path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/></svg>
-        </button>
-      </div>
-    </section>
+      <div class="promo-row" id="promoRow"></div>
 
-    <main class="main-container">
-      <div class="tabs-row">
-        <div class="tabs">
-          <button class="tab active" data-tab="cards" type="button">Карты</button>
-          <button class="tab" data-tab="wallets" type="button">Кошельки</button>
+      <section class="balance-section">
+        <div class="balance-label">Общий баланс</div>
+        <div class="balance-row">
+          <button class="balance-btn" id="toggleBalance" type="button">
+            <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+          </button>
+          
+          <div class="balance-amount" id="totalBalance">—</div>
+
+          <button class="balance-btn" id="refreshBalance" type="button">
+            <svg width="22" height="22" viewBox="0 0 24 24" id="refreshIcon"><path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46C8.97 19.54 10.43 20 12 20c4.42 0 8-3.58 8-8h3l-4-4zM6 12c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46C15.03 4.46 13.57 4 12 4c-4.42 0-8 3.58-8 8H1l4 4 4-4H6z"/></svg>
+          </button>
         </div>
-        <button class="add-btn" id="quickAddCard" type="button">+</button>
+      </section>
+
+      <main class="main-container">
+        <div class="tabs-row">
+          <div class="tabs">
+            <button class="tab active" data-tab="cards" type="button">Карты</button>
+            <button class="tab" data-tab="wallets" type="button">Кошельки</button>
+          </div>
+          <button class="add-btn" id="quickAddCard" type="button">+</button>
+        </div>
+
+        <div class="cards-list" id="cardsPanel"></div>
+
+        <button class="toggle-all-btn" id="toggleShowAll" type="button">
+          <span>Показать все</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </main>
+
+      <button class="monitoring-btn" type="button">Мониторинг</button>
+
+      <div class="credit-banner">
+        <div class="credit-banner-text">Кредитная карта до 50 дней без процентов на ВСЕ!</div>
+        <div class="credit-banner-card">
+          <div class="card-chip"></div>
+          <div class="card-txt">Credit</div>
+          <div class="card-brand">VISA</div>
+        </div>
       </div>
 
-      <div class="cards-list" id="cardsPanel"></div>
+      <div class="info-container">
+        <div class="info-header-row">
+          <div class="info-title">Вклады</div>
+          <button class="info-add-btn" type="button">+</button>
+        </div>
+        <div class="deposit-body">
+          <div class="deposit-icon-box">
+            <div class="safe-icon"></div>
+            <div class="percent-badge">%</div>
+          </div>
+          <div class="deposit-info">
+            <div class="deposit-headline">До 19% годовых</div>
+            <div class="deposit-subtext">Ежемесячный доход.<br>Пополнение и снятие — в любое время</div>
+          </div>
+        </div>
+        <button class="action-link-btn" type="button">Выбрать вклад</button>
+      </div>
 
-      <button class="toggle-all-btn" id="toggleShowAll" type="button">
-        <span>Показать все</span>
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
-      </button>
-    </main>
-
-    <button class="monitoring-btn" type="button">Мониторинг</button>
-
-    <div class="credit-banner">
-      <div class="credit-banner-text">Кредитная карта до 50 дней без процентов на ВСЕ!</div>
-      <div class="credit-banner-card">
-        <div class="card-chip"></div>
-        <div class="card-txt">Credit</div>
-        <div class="card-brand">VISA</div>
+      <div class="info-container">
+        <div class="rates-header">
+          <div class="info-title">Курс в приложении</div>
+          <button class="rates-action" type="button">Обменять</button>
+        </div>
+        <div class="rates-table-header">
+          <div>Валюта</div>
+          <div class="txt-right">Продать</div>
+          <div class="txt-right">Купить</div>
+        </div>
+        <div class="rate-row">
+          <div class="currency-info">
+            <span class="currency-name">Валюта</span>
+            <span class="currency-code">$ USD</span>
+          </div>
+          <div class="rate-value" id="rateSell">11 960</div>
+          <div class="rate-value" id="rateBuy">12 050</div>
+        </div>
       </div>
     </div>
 
-    <div class="info-container">
-      <div class="info-header-row">
-        <div class="info-title">Вклады</div>
-        <button class="info-add-btn" type="button">+</button>
-      </div>
-      <div class="deposit-body">
-        <div class="deposit-icon-box">
-          <div class="safe-icon"></div>
-          <div class="percent-badge">%</div>
-        </div>
-        <div class="deposit-info">
-          <div class="deposit-headline">До 19% годовых</div>
-          <div class="deposit-subtext">Ежемесячный доход.<br>Пополнение и снятие — в любое время</div>
-        </div>
-      </div>
-      <button class="action-link-btn" type="button">Выбрать вклад</button>
-    </div>
+    <div id="screen-oplata" class="screen">
+      <div class="settings-page-container">
+        <h2 class="page-title">Оплата и настройки</h2>
 
-    <div class="info-container">
-      <div class="rates-header">
-        <div class="info-title">Курс в приложении</div>
-        <button class="rates-action" type="button">Обменять</button>
-      </div>
-      <div class="rates-table-header">
-        <div>Валюта</div>
-        <div class="txt-right">Продать</div>
-        <div class="txt-right">Купить</div>
-      </div>
-      <div class="rate-row">
-        <div class="currency-info">
-          <span class="currency-name">Валюта</span>
-          <span class="currency-code">$ USD</span>
+        <div class="field">
+          <label for="inputName">Имя пользователя</label>
+          <input id="inputName" type="text" placeholder="Введите имя..." />
         </div>
-        <div class="rate-value" id="rateSell">11 960</div>
-        <div class="rate-value" id="rateBuy">12 050</div>
+
+        <div class="field">
+          <label>Управление картами</label>
+          <div id="cardEditList"></div>
+        </div>
+
+        <button class="btn-add-card" id="addCardButton" type="button">+ Добавить новую карту</button>
+        <button class="btn-primary" id="saveSettings" type="button">Сохранить изменения</button>
       </div>
     </div>
 
     <nav class="bottom-nav">
-      <button class="nav-item active" type="button">
+      <button class="nav-item active" data-target="main" type="button">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
         Главная
       </button>
-      <button class="nav-item" type="button">
+      <button class="nav-item" data-target="oplata" type="button">
         <svg class="nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 18v1c0 1.1-.9 2-2 2H5c-1.11 0-2-.9-2-2V5c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10V8H12v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5 0 .67 1.5 1.5-.67 1.5-1.5z"/></svg>
         Оплата
       </button>
@@ -898,32 +880,6 @@
         Продукты
       </button>
     </nav>
-  </div>
-
-  <div class="modal-backdrop" id="modalBackdrop">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <div class="modal-header">
-        <div class="modal-title" id="modalTitle">Настройки интерфейса</div>
-        <button class="close-btn" id="closeSettings" type="button">×</button>
-      </div>
-
-      <div class="field">
-        <label for="inputName">Имя пользователя</label>
-        <input id="inputName" type="text" />
-      </div>
-
-      <div class="field">
-        <label>Управление картами</label>
-        <div id="cardEditList"></div>
-      </div>
-
-      <button class="btn-add-card" id="addCardButton" type="button">+ Добавить новую карту</button>
-
-      <div class="modal-actions">
-        <button class="btn btn-secondary" id="cancelSettings" type="button">Отмена</button>
-        <button class="btn btn-primary" id="saveSettings" type="button">Сохранить</button>
-      </div>
-    </div>
   </div>
 
   <script>
@@ -956,10 +912,7 @@
     const totalBalance = document.getElementById('totalBalance');
     const cardsPanel = document.getElementById('cardsPanel');
     const promoRow = document.getElementById('promoRow');
-    const modalBackdrop = document.getElementById('modalBackdrop');
     const settingsOpen = document.getElementById('settingsOpen');
-    const closeSettings = document.getElementById('closeSettings');
-    const cancelSettings = document.getElementById('cancelSettings');
     const saveSettings = document.getElementById('saveSettings');
     const cardEditList = document.getElementById('cardEditList');
     const addCardButton = document.getElementById('addCardButton');
@@ -972,6 +925,10 @@
     const tabs = document.querySelectorAll('.tab');
     const rateSell = document.getElementById('rateSell');
     const rateBuy = document.getElementById('rateBuy');
+
+    // Навигационные элементы переключения экранов
+    const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+    const screens = document.querySelectorAll('.screen');
 
     function parseBalance(value) {
       if (typeof value === 'number') return value;
@@ -1049,7 +1006,7 @@
         return `
           <div class="card-item">
             <div class="card-visual" style="background: ${card.color}; color: ${textColor}; ${borderStyle}">
-              
+              <span class="brand-icon">${card.icon}</span>
               <span class="mini-code">${card.code}</span>
               <span class="logo-sub">${subLogo}</span>
             </div>
@@ -1073,16 +1030,10 @@
       }
     }
 
-    function openSettings() {
+    // Инициализация полей на экране Оплата
+    function initOplataMenu() {
       inputName.value = state.name;
       renderCardEditList();
-      modalBackdrop.style.display = 'flex';
-      setTimeout(() => modalBackdrop.classList.add('open'), 10);
-    }
-
-    function closeSettingsModal() {
-      modalBackdrop.classList.remove('open');
-      setTimeout(() => modalBackdrop.style.display = 'none', 200);
     }
 
     function renderCardEditList() {
@@ -1125,7 +1076,7 @@
       });
     }
 
-    function saveSettingsModal() {
+    function saveSettingsData() {
       state.name = inputName.value.trim() || 'HIKMATULLA';
       
       const boxes = cardEditList.querySelectorAll('.card-edit-box');
@@ -1151,7 +1102,24 @@
       renderProfile();
       renderCards();
       renderBalance();
-      closeSettingsModal();
+
+      // После сохранения перенаправляем на «Главную»
+      switchScreen('main');
+    }
+
+    function switchScreen(screenId) {
+      screens.forEach(s => s.classList.remove('active'));
+      navItems.forEach(n => n.classList.remove('active'));
+
+      const targetScreen = document.getElementById(`screen-${screenId}`);
+      if (targetScreen) targetScreen.classList.add('active');
+
+      const targetNav = document.querySelector(`.bottom-nav [data-target="${screenId}"]`);
+      if (targetNav) targetNav.classList.add('active');
+
+      if (screenId === 'oplata') {
+        initOplataMenu();
+      }
     }
 
     function loadState() {
@@ -1182,10 +1150,19 @@
       renderBalance();
       renderRates();
 
-      settingsOpen.addEventListener('click', openSettings);
-      closeSettings.addEventListener('click', closeSettingsModal);
-      cancelSettings.addEventListener('click', closeSettingsModal);
-      saveSettings.addEventListener('click', saveSettingsModal);
+      // Переключение вкладок снизу
+      navItems.forEach(item => {
+        item.addEventListener('click', () => {
+          const target = item.dataset.target;
+          if (target) switchScreen(target);
+        });
+      });
+
+      // Ссылки на открытие меню "Оплата/Настройки" с главного экрана
+      settingsOpen.addEventListener('click', () => switchScreen('oplata'));
+      quickAddCard.addEventListener('click', () => switchScreen('oplata'));
+
+      saveSettings.addEventListener('click', saveSettingsData);
 
       toggleBalanceButton.addEventListener('click', () => {
         state.showBalance = !state.showBalance;
@@ -1208,8 +1185,6 @@
         state.cards.push({ id: Date.now(), code: '0000', type: 'HUMO', label: 'HUMO', balance: '0.00', color: '#3a7d8c', icon: 'H' });
         renderCardEditList();
       });
-
-      quickAddCard.addEventListener('click', openSettings);
 
       tabs.forEach(tab => {
         tab.addEventListener('click', () => {
